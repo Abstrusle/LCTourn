@@ -1,4 +1,8 @@
-﻿# libcirc-alt-windows
+﻿
+ Compiled using lib-alt-windows. Just delete the exe and make your own mod of this mod, if you wish.
+ 
+ 
+ # libcirc-alt-windows
 
 version: 1.3-alt
 
@@ -14,11 +18,6 @@ The executable should go in the "bin" subdirectory (the same directory as the "i
 If this isn't okay, you can specify a path in the fopen calls at about lines 2808 and 2860 of h_story.c.
 
 If you are running the game from a terminal, make sure to cd into bin/ before running it!
-
----
-
-On top of changing the way this game compiles, this versions changes some of the source code to make it more compatible with modding.
-I do NOT guarantee that the game will behave exactly the same way the original version does (although if it doesn't that proabably means I did something terribly wrong)
 
 ---
 
