@@ -9,6 +9,7 @@
 
 #define ELINE_HEIGHT 15
 #define ELETTER_WIDTH 6
+#define ESOURCES (PLAYERS * TEMPLATES_PER_PLAYER)
 
 
 enum
@@ -172,7 +173,7 @@ struct editorstruct
 {
 // int panel_x, panel_y, panel_w, panel_h;
  int text_width; // initialised in e_inter.c
- struct source_edit_struct *source_edit;
+ struct source_edit_struct source_edit [ESOURCES];
 
 // int current_source_edit; // this is the index in the source_edit array, not the tab index
 

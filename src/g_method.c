@@ -1462,7 +1462,7 @@ SPIKES:
 					 if (!object_uses_power(core, POWER_COST_GATHER_BASE))
 							break;
 					 core->data_stored += data_harvested;
-			//		 w.data_well[vmstate.nearby_well_index].data -= data_harvested;
+					 w.data_well[vmstate.nearby_well_index].data -= data_harvested;
      	w.data_well[vmstate.nearby_well_index].last_harvested = w.world_time;
 
 					 proc->object_instance[object_index].ongoing_power_cost = POWER_COST_GATHER_BASE;// + (POWER_COST_GATHER_1_DATA * data_harvested);

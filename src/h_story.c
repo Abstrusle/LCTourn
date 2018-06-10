@@ -2790,73 +2790,16 @@ void	story_mission_defeated(void)
 
 void load_story_status_file(void)
 {
-
+#define MISSIONFILE_SIZE 256
  int i, j;
 
  for (i = 0; i < GAME_TYPES; i ++)
-	{
-		for (j = 0; j < MISSIONS; j ++)
-		{
-			settings.saved_story_mission_defeated [i] [j] = 0;
-		}
-	}
-/*
-// some story missions are unlocked by default:
-	settings.saved_story_mission_defeated [GAME_TYPE_BASIC] [MISSION_TUTORIAL1] = 1;
-// should the next two missions also be unlocked? not sure... The tutorials are pretty quick, anyway.
-
-// it doesn't seem necessary to require the tutorials to be completed for an advanced game.
-	settings.saved_story_mission_defeated [GAME_TYPE_ADVANCED] [MISSION_TUTORIAL1] = 1;
-	settings.saved_story_mission_defeated [GAME_TYPE_ADVANCED] [MISSION_TUTORIAL2] = 1;
-	settings.saved_story_mission_defeated [GAME_TYPE_ADVANCED] [MISSION_BLUE_1] = 1;
-//	settings.saved_story_mission_defeated [GAME_TYPE_BASIC] [MISSION_TUTORIAL1] = 1;
-*/
-
-#define MISSIONFILE_SIZE 256
-
- FILE *missionfile;
- char buffer [MISSIONFILE_SIZE];
-
- missionfile = fopen(settings.path_to_msn_dat_file, "rb");
-
- if (!missionfile)
- {
-  fprintf(stdout, "\n mission status (default)");
-  return;
- }
-
- int read_in = fread(buffer, 1, MISSIONFILE_SIZE, missionfile);
-
- if (ferror(missionfile)
-  || read_in == 0)
- {
-  fprintf(stdout, "\nFailed to read mission status from [%s]. Starting with default mission status.", settings.path_to_msn_dat_file);
-  fclose(missionfile);
-  return;
- }
-
- int buffer_pos = 0;
-
- for (i = 0; i < STORY_TYPES; i ++)
-	{
-		for (j = 0; j < MISSIONS; j ++)
-		{
-		 settings.saved_story_mission_defeated [i] [j] = buffer [buffer_pos];
-		 buffer_pos ++;
-		 if (settings.saved_story_mission_defeated [i] [j] < 0
- 		 || settings.saved_story_mission_defeated [i] [j] > 1)
-		 {
- 			fprintf(stdout, "\nWarning: mission [%i] [%i] status (%i) invalid (should be 0 or 1).", i, j, settings.saved_story_mission_defeated [i] [j]);
-			 settings.saved_story_mission_defeated [i] [j] = 0;
-		 }
-	 }
-	}
-
- fclose(missionfile);
-
- fprintf(stdout, "\n mission status (loaded)");
-
- return;
+    {
+        for (j = 0; j < MISSIONS; j ++)
+        {
+            settings.saved_story_mission_defeated [i] [j] = 1;
+        }
+    }
 }
 
 
@@ -2883,13 +2826,13 @@ void save_story_status_file(void)
  int buffer_pos = 0;
 
  for (i = 0; i < STORY_TYPES; i ++)
-	{
+    {
   for (j = 0; j < MISSIONS; j ++)
-	 {
-		 buffer [buffer_pos] = settings.saved_story_mission_defeated [i] [j];
-		 buffer_pos ++;
-	 }
-	}
+     {
+         buffer [buffer_pos] = settings.saved_story_mission_defeated [i] [j];
+         buffer_pos ++;
+     }
+    }
 
  int written = fwrite(buffer, 1, buffer_pos, file);
 
@@ -2903,4 +2846,3 @@ void save_story_status_file(void)
  fclose(file);
 
 }
-

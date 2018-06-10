@@ -34,8 +34,6 @@
 #define GROUP_MAX_MEMBERS 24
 #define PLAYERS 4
 
-#define ESOURCES (PLAYERS * TEMPLATES_PER_PLAYER)
-
 // any changes to bcode header structure may need to be reflected in:
 //  intercode_process_header() in c_inter.c
 //  parse_interface_definition() in c_comp.c

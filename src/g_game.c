@@ -52,7 +52,6 @@ struct game_struct game;
 extern struct command_struct command;
 extern struct fontstruct font [FONTS];
 extern struct bcode_panel_state_struct bcp_state;
-extern struct editorstruct editor;
 
 void run_game(void);
 void init_main_loop(void);
@@ -101,6 +100,8 @@ void start_game(void)
 #ifdef DEBUG_MODE
     game.vision_mask = 0;
 #endif
+
+
 
  game.user_player_index = 0;
 
@@ -1011,7 +1012,7 @@ now attack
 					game.game_over_status = GAME_END_MISSION_COMPLETE;
 					goto finished_game_over;
 				}
-	   if (w.world_seconds >= 3600) // 1 hour time limit
+	   if (w.world_seconds >= 36000) // 1 hour time limit
 	   {
 		   set_game_over();
 		   game.game_over_status = GAME_END_MISSION_FAILED_TIME;
@@ -1178,7 +1179,7 @@ static int run_custom_game(void)
   return 0;
 	}
 
-	if (w.world_seconds >= 3600) // maximum game length 1 hour
+	if (w.world_seconds >= 36000) // maximum game length 1 hour
 	{
 		set_game_over();
 		game.game_over_status = GAME_END_DRAW_OUT_OF_TIME;

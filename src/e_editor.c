@@ -242,14 +242,6 @@ void init_editor(void)
 // editor.first_press = 1;
  editor.submenu_open = -1;
 
- if ((editor.source_edit = malloc(sizeof(struct source_edit_struct) * ESOURCES)) == NULL)
-	{
-		printf("\n[Error] Allocation of the editor buffer failed");
-		exit (-1);
-	}
- printf("\nThe spaget just consumed %luMB of data", sizeof(struct source_edit_struct) * ESOURCES / 1024 / 1024);
-
-
  int i, j;
 
  for (i = 0; i < PLAYERS; i ++)
@@ -288,6 +280,7 @@ void init_editor(void)
  completion.list_size = 0; // initialise code completion box
 
  init_code_completion(); // in e_complete.c
+
 
 }
 

@@ -459,7 +459,7 @@ void run_world(void)
 						data_transferred = w.data_well[i].data_max - w.data_well[i].data;
 					if (data_transferred > w.data_well[i].reserve_data [j])
 						data_transferred = w.data_well[i].reserve_data [j];
-					w.data_well[i].reserve_data [j] -= data_transferred;
+		//			w.data_well[i].reserve_data [j] -= data_transferred;
 					w.data_well[i].data += data_transferred;
 					w.data_well[i].last_transferred = w.world_time;
 				}

@@ -75,7 +75,6 @@ void init_all_templates(void)
 
  int i, j;
 
-
  for (i = 0; i < PLAYERS; i ++)
 	{
 		for (j = 0; j < TEMPLATES_PER_PLAYER; j ++)
@@ -96,14 +95,12 @@ void init_template(struct template_struct* tpl, int player_index, int templ_inde
 
 // clear_template_but_not_source(tpl);
 
-
  tpl->esource_index = (player_index * TEMPLATES_PER_PLAYER) + templ_index;
  tpl->source_edit = &editor.source_edit [tpl->esource_index];
 	init_source_edit_struct(templ[player_index][templ_index].source_edit);
 	snprintf(tpl->menu_button_title, TEMPLATE_BUTTON_TITLE_STRING_LENGTH-1, "Player %i template %i", player_index, templ_index);
 
  clear_template_including_source(tpl);
-
 
 }
 
