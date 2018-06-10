@@ -1,7 +1,4 @@
-﻿
- Compiled using lib-alt-windows. Just delete the exe and make your own mod of this mod, if you wish.
- 
- 
+
  # libcirc-alt-windows
 
 version: 1.3-alt
